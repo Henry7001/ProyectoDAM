@@ -1,0 +1,25 @@
+# Archivos y carpetas generados por el entorno de desarrollo y compilación
+.gradle/
+.externalNativeBuild/
+.DS_Store/
+.idea/
+build/
+local.properties/
+captures/
+app/build/
+outputs/
+tmp/
+
+# Archivos específicos de proyectos de IntelliJ IDEA
+*.iml
+*.ipr
+*.cxx
+
+# Archivos específicos de Gradle Wrapper
+gradle-wrapper.jar
+local.properties
+
+# Otros archivos temporales o de caché
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,120 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="10dp"
+    android:elevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="ID: ">
+        </TextView>
+
+        <TextView
+            android:id="@+id/Nombre"
+            android:layout_below="@id/id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Nombre: ">
+        </TextView>
+
+        <TextView
+            android:id="@+id/Cedula"
+            android:layout_below="@id/Nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Cedula: ">
+        </TextView>
+
+        <TextView
+            android:id="@+id/Correo"
+            android:layout_below="@id/Cedula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Correo: ">
+        </TextView>
+
+        <TextView
+            android:id="@+id/Celular"
+            android:layout_below="@id/Correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Celular: ">
+        </TextView>
+
+        <TextView
+            android:id="@+id/Direccion"
+            android:layout_below="@id/Celular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Direccion: ">
+        </TextView>
+
+        <TextView
+            android:id="@+id/Carrera"
+            android:layout_below="@id/Direccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Carrera: ">
+        </TextView>
+
+        <TextView
+            android:id="@+id/Semestre"
+            android:layout_below="@id/Carrera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Semestre: ">
+        </TextView>
+
+        <TextView
+            android:id="@+id/FotoLabel"
+            android:layout_below="@id/Semestre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:text="Foto: ">
+        </TextView>
+
+        <ImageView
+            android:id="@+id/Foto"
+            android:layout_below="@id/FotoLabel"
+            android:layout_width="300px"
+            android:layout_height="400px">
+        </ImageView>
+
+        <Button
+            android:id="@+id/Saludo"
+            android:layout_below="@id/Foto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Escuchar Saludo"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/VerPDF"
+            android:layout_below="@id/Saludo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver titulo"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+    
+
+</androidx.cardview.widget.CardView>

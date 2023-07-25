@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.ProyectoDAM" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/AzulUG</item>
+        <item name="colorSurface">@color/black</item>
+        <item name="colorOnSurface">@color/white</item>
+    </style>
+    <style name="Theme.ProyectoDAM.Registros" parent="@style/Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/AzulUG</item>
+        <item name="colorSurface">@color/black</item>
+        <item name="colorOnSurface">@color/white</item>
+    </style>
+</resources>
