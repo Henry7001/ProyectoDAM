@@ -208,4 +208,73 @@ public class DB extends SQLiteOpenHelper {
         return newRowId;
     }
 
+    public static void eliminarEstudiante(Context context, int estudianteId) {
+        SQLiteDatabase db = new DB(context).getReadableDatabase();
+        String whereClause = ColId + " = ?";
+        String[] whereArgs = {String.valueOf(estudianteId)};
+
+        db.delete(TablaEstudiantes, whereClause, whereArgs);
+        db.close();
+    }
+
+    public static Estudiante obtenerEstudiantePorId(Context context, int estudianteId) {
+        SQLiteDatabase db = new DB(context).getReadableDatabase();
+        String[] columnas = {
+                ColId, ColCedula, ColNombre, ColApellido, ColCorreo, ColCelular,
+                ColDireccion, ColCarrera, ColSemestre, ColFoto, ColSaludoAudio,
+                ColTituloPDF, ColEstado
+        };
+
+        String seleccion = ColId + " = ?";
+        String[] argumentos = {String.valueOf(estudianteId)};
+
+        Cursor cursor = db.query(TablaEstudiantes, columnas, seleccion, argumentos, null, null, null);
+
+        Estudiante estudiante = null;
+
+        if (cursor.moveToFirst()) {
+            estudiante = new Estudiante();
+            estudiante.setId(cursor.getInt(0));
+            estudiante.setCedula(cursor.getString(1));
+            estudiante.setNombre(cursor.getString(2));
+            estudiante.setApellido(cursor.getString(3));
+            estudiante.setCorreo(cursor.getString(4));
+            estudiante.setCelular(cursor.getString(5));
+            estudiante.setDireccion(cursor.getString(6));
+            estudiante.setCarrera(cursor.getString(7));
+            estudiante.setSemestre(cursor.getString(8));
+            estudiante.setFoto(cursor.getBlob(9));
+            estudiante.setSaludoAudio(cursor.getBlob(10));
+            estudiante.setTituloPDF(cursor.getBlob(11));
+            estudiante.setEstado(cursor.getString(12));
+        }
+
+        cursor.close();
+        return estudiante;
+    }
+
+
+    public void modificarEstudiante(Context context, Estudiante estudiante) {
+        SQLiteDatabase db = new DB(context).getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(ColCedula, estudiante.getCedula());
+        contentValues.put(ColNombre, estudiante.getNombre());
+        contentValues.put(ColApellido, estudiante.getApellido());
+        contentValues.put(ColCorreo, estudiante.getCorreo());
+        contentValues.put(ColCelular, estudiante.getCelular());
+        contentValues.put(ColDireccion, estudiante.getDireccion());
+        contentValues.put(ColCarrera, estudiante.getCarrera());
+        contentValues.put(ColSemestre, estudiante.getSemestre());
+        contentValues.put(ColFoto, estudiante.getFoto());
+        contentValues.put(ColTituloPDF, estudiante.getTituloPDF());
+        contentValues.put(ColSaludoAudio, estudiante.getSaludoAudio());
+
+        String whereClause = ColId + " = ?";
+        String[] whereArgs = {String.valueOf(estudiante.getId())};
+
+        db.update(TablaEstudiantes, contentValues, whereClause, whereArgs);
+        db.close();
+    }
+
 }

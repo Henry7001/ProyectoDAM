@@ -14,8 +14,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +31,7 @@ import java.util.List;
 
 public class EstudiantesAdapter extends RecyclerView.Adapter<EstudiantesAdapter.EstudianteViewHolder> {
     private final Context context;
+    private static final int REQUEST_EDIT_ESTUDIANTE = 1;
     private List<Estudiante> listaEstudiantes;
     private MediaPlayer mediaPlayer;
 
@@ -51,13 +55,15 @@ public class EstudiantesAdapter extends RecyclerView.Adapter<EstudiantesAdapter.
         return null;
     }
 
-    // Método para filtrar la lista de estudiantes según el atributo y valor de búsqueda
     public void filtrarEstudiantes(String atributo, String valor) {
         listaEstudiantes = obtenerEstudiantesFiltrados(context, atributo, valor);
         notifyDataSetChanged();
     }
 
-    // Método para obtener la lista de estudiantes filtrados según el criterio de búsqueda
+    public void Eliminar(int id){
+        DB.eliminarEstudiante(context,id);
+    }
+
     private List<Estudiante> obtenerEstudiantesFiltrados(Context context, String atributo, String valor) {
         return DB.buscarEstudiantes(context, atributo, valor);
     }
@@ -80,6 +86,27 @@ public class EstudiantesAdapter extends RecyclerView.Adapter<EstudiantesAdapter.
             String pdfFileName = "pdf_" + estudiante.getCedula() + ".pdf";
             abrirPDF(pdfData, context, pdfFileName);
         });
+        holder.btnEliminar.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Eliminar estudiante");
+            builder.setMessage("¿Deseas eliminar este estudiante?");
+            builder.setPositiveButton("Sí", (dialog, which) -> {
+                this.Eliminar(estudiante.getId());
+                Toast.makeText(context, "Estudiante eliminado", Toast.LENGTH_SHORT).show();
+                List<Estudiante> nuevaLista = DB.obtenerEstudiantes(context);
+                this.refreshEstudiantes(nuevaLista);
+            });
+            builder.setNegativeButton("No", (dialog, which) -> {
+                dialog.dismiss();
+            });
+            builder.show();
+
+        });
+        holder.btnEditar.setOnClickListener(view -> {
+            Intent intent = new Intent(this.context, EstudianteEdit.class);
+            intent.putExtra("id", estudiante.getId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -99,7 +126,8 @@ public class EstudiantesAdapter extends RecyclerView.Adapter<EstudiantesAdapter.
         ImageView imgFoto;
         Button btnPlay;
         Button btnPDF;
-
+        Button btnEliminar;
+        Button btnEditar;
         public EstudianteViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNombre = itemView.findViewById(R.id.Nombre);
@@ -113,6 +141,8 @@ public class EstudiantesAdapter extends RecyclerView.Adapter<EstudiantesAdapter.
             imgFoto=itemView.findViewById(R.id.Foto);
             btnPlay= itemView.findViewById(R.id.Saludo);
             btnPDF = itemView.findViewById(R.id.VerPDF);
+            btnEliminar = itemView.findViewById(R.id.btnEliminar);
+            btnEditar = itemView.findViewById(R.id.btnEditar);
         }
     }
 
@@ -159,6 +189,11 @@ public class EstudiantesAdapter extends RecyclerView.Adapter<EstudiantesAdapter.
         }
     }
 
+    public void refreshEstudiantes(List<Estudiante> nuevosEstudiantes) {
+        listaEstudiantes = nuevosEstudiantes;
+        notifyDataSetChanged();
+    }
+
     private void abrirPDF(byte[] pdfData, Context context, String pdfFileName) {
         try {
             File pdfFile = new File(context.getCacheDir(), pdfFileName);
@@ -166,10 +201,8 @@ public class EstudiantesAdapter extends RecyclerView.Adapter<EstudiantesAdapter.
             fos.write(pdfData);
             fos.close();
 
-            // Obtener el URI del archivo utilizando FileProvider
             Uri pdfUri = FileProvider.getUriForFile(context, context.getPackageName() + ".fileprovider", pdfFile);
 
-            // Crear un Intent para abrir el PDF con el lector PDF predeterminado
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setDataAndType(pdfUri, "application/pdf");
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);

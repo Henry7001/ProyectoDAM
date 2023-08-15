@@ -1,120 +1,135 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:padding="10dp"
-    android:elevation="4dp">
+    android:elevation="4dp"
+    android:padding="10dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/id"
-            android:layout_width="match_parent"
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="ID: ">
-        </TextView>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID: "
+                android:textSize="18dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btnEditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/AzulUG"
+                android:text="Editar" />
+
+            <Button
+                android:id="@+id/btnEliminar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/Rojo"
+                android:text="Eliminar" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/Nombre"
-            android:layout_below="@id/id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="Nombre: ">
-        </TextView>
+            android:layout_below="@id/linearLayout"
+            android:text="Nombre: "
+            android:textSize="18dp"></TextView>
 
         <TextView
             android:id="@+id/Cedula"
-            android:layout_below="@id/Nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="Cedula: ">
-        </TextView>
+            android:layout_below="@id/Nombre"
+            android:text="Cedula: "
+            android:textSize="18dp"></TextView>
 
         <TextView
             android:id="@+id/Correo"
-            android:layout_below="@id/Cedula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="Correo: ">
-        </TextView>
+            android:layout_below="@id/Cedula"
+            android:text="Correo: "
+            android:textSize="18dp"></TextView>
 
         <TextView
             android:id="@+id/Celular"
-            android:layout_below="@id/Correo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="Celular: ">
-        </TextView>
+            android:layout_below="@id/Correo"
+            android:text="Celular: "
+            android:textSize="18dp"></TextView>
 
         <TextView
             android:id="@+id/Direccion"
-            android:layout_below="@id/Celular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="Direccion: ">
-        </TextView>
+            android:layout_below="@id/Celular"
+            android:text="Direccion: "
+            android:textSize="18dp"></TextView>
 
         <TextView
             android:id="@+id/Carrera"
-            android:layout_below="@id/Direccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="Carrera: ">
-        </TextView>
+            android:layout_below="@id/Direccion"
+            android:text="Carrera: "
+            android:textSize="18dp"></TextView>
 
         <TextView
             android:id="@+id/Semestre"
-            android:layout_below="@id/Carrera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="Semestre: ">
-        </TextView>
+            android:layout_below="@id/Carrera"
+            android:text="Semestre: "
+            android:textSize="18dp"></TextView>
 
         <TextView
             android:id="@+id/FotoLabel"
-            android:layout_below="@id/Semestre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:layout_below="@id/Semestre"
+            android:text="Foto: "
             android:textSize="18dp"
-            android:text="Foto: ">
-        </TextView>
+            android:textStyle="bold"></TextView>
 
         <ImageView
             android:id="@+id/Foto"
-            android:layout_below="@id/FotoLabel"
             android:layout_width="300px"
-            android:layout_height="400px">
-        </ImageView>
+            android:layout_height="400px"
+            android:layout_below="@id/FotoLabel"></ImageView>
 
         <Button
             android:id="@+id/Saludo"
-            android:layout_below="@id/Foto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/Foto"
             android:text="Escuchar Saludo"
             android:textSize="18dp" />
 
         <Button
             android:id="@+id/VerPDF"
-            android:layout_below="@id/Saludo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/Saludo"
             android:text="Ver titulo"
             android:textSize="18dp" />
 
     </RelativeLayout>
 
-    
 
 </androidx.cardview.widget.CardView>

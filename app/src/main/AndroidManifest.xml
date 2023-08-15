@@ -20,6 +20,11 @@
             android:theme="@style/Theme.ProyectoDAM.Registros"
             android:exported="false" />
 
+        <activity
+            android:name=".EstudianteEdit"
+            android:theme="@style/Theme.ProyectoDAM.Registros"
+            android:exported="false" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.desarrollomovil86.proyectoDAM.fileprovider"

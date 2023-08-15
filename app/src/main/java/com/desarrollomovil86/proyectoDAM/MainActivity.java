@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
                 if (usuarioExiste) {
                     showToast("Bienvenid@, " + username);
-                    // Suponiendo que el nombre de usuario está almacenado en una variable llamada "username"
                     Intent intent = new Intent(MainActivity.this, registros.class);
                     intent.putExtra("USERNAME", username);
                     startActivity(intent);

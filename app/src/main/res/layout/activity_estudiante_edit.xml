@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Theme.AppCompat.DayNight"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".EstudianteForm">
+
+    <TextView
+        android:id="@+id/nombreUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modificar estudiante:"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <!-- EditText for Cedula -->
+    <EditText
+        android:id="@+id/editTextCedula"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nombreUsuario"
+        android:hint="Cedula" />
+
+    <!-- EditText for Nombre -->
+    <EditText
+        android:id="@+id/editTextNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextCedula"
+        android:hint="Nombre" />
+
+    <!-- EditText for Apellido -->
+    <EditText
+        android:id="@+id/editTextApellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextNombre"
+        android:hint="Apellido" />
+
+    <!-- EditText for Correo -->
+    <EditText
+        android:id="@+id/editTextCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextApellido"
+        android:hint="Correo" />
+
+    <!-- EditText for Celular -->
+    <EditText
+        android:id="@+id/editTextCelular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextCorreo"
+        android:hint="Celular" />
+
+    <!-- EditText for Dirección -->
+    <EditText
+        android:id="@+id/editTextDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextCelular"
+        android:hint="Dirección" />
+
+    <!-- EditText for Carrera -->
+    <EditText
+        android:id="@+id/editTextCarrera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextDireccion"
+        android:hint="Carrera" />
+
+    <!-- EditText for Semestre -->
+    <EditText
+        android:id="@+id/editTextSemestre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextCarrera"
+        android:hint="Semestre" />
+
+    <!-- Button for Audio Recording -->
+    <Button
+        android:id="@+id/btnGrabarAudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextSemestre"
+        android:layout_marginTop="10dp"
+        android:text="Grabar Audio" />
+
+    <!-- TextView or ImageView to show Audio Recording status -->
+    <TextView
+        android:id="@+id/textViewAudioStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnGrabarAudio"
+        android:text="Nada grabado aún" />
+
+    <!-- Button for PDF File Upload -->
+    <Button
+        android:id="@+id/btnSeleccionarPDF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewAudioStatus"
+        android:layout_marginTop="10dp"
+        android:text="Seleccionar PDF" />
+
+    <!-- TextView or ImageView to show PDF File Upload status -->
+    <TextView
+        android:id="@+id/textViewPDFStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSeleccionarPDF"
+        android:text="Ningún PDF seleccionado" />
+
+    <!-- Button for Image Gallery Selection -->
+    <Button
+        android:id="@+id/btnSeleccionarImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewPDFStatus"
+        android:layout_marginTop="10dp"
+        android:text="Seleccionar Imagen" />
+
+    <!-- TextView or ImageView to show Image Gallery Selection status -->
+    <TextView
+        android:id="@+id/textViewImagenStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSeleccionarImagen"
+        android:text="Ninguna imagen seleccionada" />
+
+    <!-- Add other UI elements as needed -->
+
+    <!-- Button to insert the student -->
+    <Button
+        android:id="@+id/btnInsertar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewImagenStatus"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Insertar" />
+
+</RelativeLayout>

@@ -25,39 +25,29 @@ public class registros extends AppCompatActivity {
     private EstudiantesAdapter estudiantesAdapter;
     private Spinner spinnerOptions;
     private EditText txtBusqueda;
-
-
+    private Button btnRefrescar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registros);
 
-        // Initialize the RecyclerView and its adapter
         recyclerViewEstudiantes = findViewById(R.id.recyclerViewEstudiantes);
         estudiantesList = DB.obtenerEstudiantes(this);
         estudiantesAdapter = new EstudiantesAdapter(estudiantesList, this);
 
-        // Set the RecyclerView adapter
         recyclerViewEstudiantes.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewEstudiantes.setAdapter(estudiantesAdapter);
 
-        // Obtener referencia al Spinner y al EditText desde el layout
         spinnerOptions = findViewById(R.id.spinner_options);
         txtBusqueda = findViewById(R.id.txtBusqueda);
 
-        // Definir las opciones para el Spinner
         String[] opciones = {"Nombre", "Apellido", "Cedula", "Id", "Carrera", "Semestre"};
 
-        // Crear un ArrayAdapter usando el array de opciones y un estilo predeterminado para el Spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, opciones);
 
-        // Especificar el diseño que se usará cuando el Spinner se despliegue
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Configurar el ArrayAdapter en el Spinner
         spinnerOptions.setAdapter(adapter);
-
-        // Agregar listener para detectar cambios en el Spinner
         spinnerOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -75,7 +65,7 @@ public class registros extends AppCompatActivity {
         botonRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                abrirActivity(EstudianteForm.class); // Reemplaza NuevoActivity por el nombre del Activity al que deseas ir
+                abrirActivity(EstudianteForm.class);
             }
         });
 
@@ -96,8 +86,14 @@ public class registros extends AppCompatActivity {
                 // You can leave this method empty, as it's not needed for the filtering
             }
         });
-
-
+        btnRefrescar = findViewById(R.id.Refresh);
+        btnRefrescar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                estudiantesList = DB.obtenerEstudiantes(registros.this);
+                estudiantesAdapter.refreshEstudiantes(estudiantesList);
+            }
+        });
 
         TextView nombreUsuario = findViewById(R.id.nombreUsuario);
 

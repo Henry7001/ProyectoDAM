@@ -7,8 +7,9 @@ import android.media.MediaPlayer;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.Serializable;
 
-public class Estudiante {
+public class Estudiante implements Serializable {
     private int id;
     private String cedula;
     private String nombre;
